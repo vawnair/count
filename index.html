@@ -10,7 +10,7 @@
 <!-- partial:index.partial.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>count</title>
@@ -19,9 +19,9 @@
     <script src="https://api.countapi.xyz/hit/count.bhop.media/visits?callback=liveViews" async></script>
 </head>
 <body>
-<canvas id="canvas" style="left: 0; position: absolute; top: 0;" height="100" width="100"></canvas>
-<img id="cursor" src="osx_cursor.png" style="display: none; opacity: 0.5; position: absolute;">
-<script src="jquery.min.js"></script>
+<canvas id="canvas" style="left: 0; position: absolute; top: 0;" height="100" width="100"></canvas> <!-- nu punem widgeturi, deoarece canvasul fute tot lol -->
+<img id="cursor" src="osx_cursor.png" style="display: none; opacity: 0.5; position: absolute;"> <!-- cursor osx -->
+<script src="jquery.min.js"></script> <!-- jQuery, nevoit pentru efectul de motion blur la mouse -->
 <script>
   $(function() {
     var count;
@@ -62,7 +62,7 @@
         var off1 = coreOffsets[i];
         var off2 = coreOffsets[(i + 1) % coreOffsets.length];
         c.beginPath();
-        c.fillStyle = "rgba(255,255,255 0.25)";
+        c.fillStyle = "rgba(255,255,255 0.25)"; // punem alb din pacate, altfel canvasul nu mergea :((
         c.moveTo(last.x + off1.x, last.y + off1.y);
         c.lineTo(last.x + off2.x, last.y + off2.y);
         c.lineTo(e.pageX + off2.x, e.pageY + off2.y);
@@ -95,12 +95,12 @@
 <script>
 function clicked() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.countapi.xyz/hit/count.bhop.media/awesomeclick");
+    xhr.open("GET", "https://api.countapi.xyz/hit/count.bhop.media/awesomeclick"); // sincer cacatu asta n-a mers nuj dc
     xhr.responseType = "json";
     xhr.onload = function() {
-        alert(`This button has been clicked ${this.response.value} times!`);
+        alert(`This button has been clicked ${this.response.value} times!`); // alerta onclick
     }
-    xhr.send();
+    xhr.send(); // xhr.send() aka send request to api to show that the button has been clicked; also this can be very exploitable (python moment)
 }
 </script>
 
