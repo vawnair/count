@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>count</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>count</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <script src="https://api.countapi.xyz/hit/count.bhop.media/visits?callback=liveViews" async></script>
+</head>
+<body>
+<img id="cursor" src="osx_cursor.png" style="display: none; opacity: 0.5; position: absolute;">
+<canvas id="canvas" style="left: 0; position: absolute; top: 0;" height="100" width="100"></canvas>
+<script src="jquery.min.js"></script>
+<script>
+  $(function() {
+    var count;
+    var timer;
+    //the dark black heart of the mouse cursor
+    var coreOffsets = [
+      {x: 2, y: 2},
+      {x: 9, y: 9},
+      {x: 8, y: 15},
+      {x: 1, y: 14}
+    ];
+    //the hard white shell of the mouse cursor
+    var outlineOffsets = [
+      {x: 1, y: 0},
+      {x: 11, y: 10},
+      {x: 9, y: 15},
+      {x: 8, y: 16},
+      {x: 1, y: 14}
+    ];
+    var last = {
+      x: 0,
+      y: 0
+    };
+    $('body').mousemove(function(e) {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      var offset = {
+        x: e.pageX - last.x,
+        y: e.pageY - last.y
+      };
+
+      document.getElementById('canvas').height = window.innerHeight;
+      document.getElementById('canvas').width = window.innerWidth;
+      var c = document.getElementById('canvas').getContext('2d');
+
+      for (var i = 0; i < coreOffsets.length; i++) {
+        var off1 = coreOffsets[i];
+        var off2 = coreOffsets[(i + 1) % coreOffsets.length];
+        c.beginPath();
+        c.fillStyle = "rgba(255,255,255 0.25)";
+        c.moveTo(last.x + off1.x, last.y + off1.y);
+        c.lineTo(last.x + off2.x, last.y + off2.y);
+        c.lineTo(e.pageX + off2.x, e.pageY + off2.y);
+        c.lineTo(e.pageX + off1.x, e.pageY + off1.y);
+        c.lineTo(last.x + off1.x, last.y + off1.y);
+        c.fill();
+        c.closePath();
+      }
+
+      last.x = e.pageX;
+      last.y = e.pageY;
+
+      timer = setTimeout(function() {
+        //document.getElementById('canvas').width = 799;
+        //document.getElementById('canvas').width = 800;
+      }, 20);
+    });
+    document.getElementById('canvas').height = window.innerHeight;
+    document.getElementById('canvas').width = window.innerWidth;
+  });
+
+</script>
+
+	<div class="socials">
+          <p href="#" style="text-decoration:none; font-family: mono; font-size: 1.1em; text-shadow: 0 0 0.40em #bababa;">this website has got <span id="visits"></span> views!</p>
+	</div>
+	
+
+
+<script>
+function clicked() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.countapi.xyz/hit/count.bhop.media/awesomeclick");
+    xhr.responseType = "json";
+    xhr.onload = function() {
+        alert(`This button has been clicked ${this.response.value} times!`);
+    }
+    xhr.send();
+}
+</script>
+
+<style>
+      .socials {
+        display: flex;
+	    font-size: 75px;
+        align-items: center;
+        justify-content: center;
+      }
+	  
+      .socials2 {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+      }	  
+	  
+      body {
+        background: rgb(17, 17, 17);
+      }	  
+	  
+
+</style>
+
+<style>
+</style>
+
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

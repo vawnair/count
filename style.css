@@ -11,8 +11,7 @@ body{
     justify-content: center;
     background: rgb(29, 29, 29);
     color: blanchedalmond;
-}
-h1{
-    font-size: 40px;
+p {
+    font-size: 800px;
     font-weight: 800;   
 }
